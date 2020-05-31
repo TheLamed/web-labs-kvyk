@@ -36,6 +36,75 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\src\app.theme.scss" />
+    <None Remove="ClientApp\src\app\helpers\api.decorator.ts" />
+    <None Remove="ClientApp\src\app\main\admin\admin.module.ts" />
+    <None Remove="ClientApp\src\app\main\main.module.ts" />
+    <None Remove="ClientApp\src\app\models\api-response.model.ts" />
+    <None Remove="ClientApp\src\app\models\id-value.model.ts" />
+    <None Remove="ClientApp\src\app\models\model-response.model.ts" />
+    <None Remove="ClientApp\src\app\models\paging-list.model.ts" />
+    <None Remove="ClientApp\src\app\models\products\add-product.model.ts" />
+    <None Remove="ClientApp\src\app\models\products\product.model.ts" />
+    <None Remove="ClientApp\src\app\models\products\upload-image-request.model.ts" />
+    <None Remove="ClientApp\src\app\models\profile\change-password.model.ts" />
+    <None Remove="ClientApp\src\app\models\profile\edit-profile.model.ts" />
+    <None Remove="ClientApp\src\app\models\profile\signup.model.ts" />
+    <None Remove="ClientApp\src\app\models\profile\user.model.ts" />
+    <None Remove="ClientApp\src\app\models\profile\view-user.model.ts" />
+    <None Remove="ClientApp\src\app\models\requests\get-products-request.model.ts" />
+    <None Remove="ClientApp\src\app\models\requests\get-users-request.model.ts" />
+    <None Remove="ClientApp\src\app\models\requests\login-request.model.ts" />
+    <None Remove="ClientApp\src\app\models\responses\login-response.model.ts" />
+    <None Remove="ClientApp\src\app\services\api\api-admin-product.service.ts" />
+    <None Remove="ClientApp\src\app\services\api\api-admin-users.service.ts" />
+    <None Remove="ClientApp\src\app\services\api\api-auth.service.ts" />
+    <None Remove="ClientApp\src\app\services\api\api-products.service.ts" />
+    <None Remove="ClientApp\src\app\services\api\api-profile.service.ts" />
+    <None Remove="ClientApp\src\app\services\auth.service.ts" />
+    <None Remove="ClientApp\src\app\services\dialog.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\main\admin\dashboard\" />
+    <Folder Include="ClientApp\src\app\main\shared\dialogs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app.theme.scss" />
+    <TypeScriptCompile Include="ClientApp\src\app\helpers\api.decorator.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\main\admin\admin.module.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\main\main.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\api-response.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\id-value.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\model-response.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\paging-list.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\products\add-product.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\products\product.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\products\upload-image-request.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\profile\change-password.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\profile\edit-profile.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\profile\signup.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\profile\user.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\profile\view-user.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\requests\get-users-request.model.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\models\requests\get-products-request.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\requests\login-request.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\responses\login-response.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\api\api-admin-product.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\api\api-admin-users.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\api\api-auth.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\api\api-products.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\api\api-profile.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\auth.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\dialog.service.ts" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
