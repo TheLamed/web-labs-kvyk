@@ -64,10 +64,10 @@
     <None Remove="ClientApp\src\app\services\api\api-profile.service.ts" />
     <None Remove="ClientApp\src\app\services\auth.service.ts" />
     <None Remove="ClientApp\src\app\services\dialog.service.ts" />
+    <None Remove="ClientApp\src\app\services\profile.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\main\admin\dashboard\" />
     <Folder Include="ClientApp\src\app\main\shared\dialogs\" />
   </ItemGroup>
 
@@ -96,6 +96,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\requests\get-products-request.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\requests\login-request.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\responses\login-response.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\admin-products.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\api\api-admin-product.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\api\api-admin-users.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\api\api-auth.service.ts" />
@@ -103,6 +104,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\services\api\api-profile.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\auth.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\dialog.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\profile.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

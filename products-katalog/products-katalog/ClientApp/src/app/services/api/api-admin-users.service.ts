@@ -36,7 +36,7 @@ export class ApiAdminUsersService {
   }
 
   @API<ModelResponse<boolean>>()
-  public async DeleteUser(request: AddProductModel): Promise<ModelResponse<boolean>> {
+  public async DeleteUser(request: number): Promise<ModelResponse<boolean>> {
     let response = new ModelResponse<boolean>();
     response.model = await this._httpClient.delete<boolean>(`api/admin/users/${request}`, { headers: this.headers }).toPromise();
     return response;

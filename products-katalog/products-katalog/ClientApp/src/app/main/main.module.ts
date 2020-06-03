@@ -10,6 +10,7 @@ import { ApiProductsService } from "../services/api/api-products.service";
 import { ApiProfileService } from "../services/api/api-profile.service";
 import { AuthService } from "../services/auth.service";
 import { ConfirmDialogModule } from "./shared/dialogs/confirm-dialog/confirm-dialog.module";
+import { ProfileService } from "../services/profile.service";
 
 //#region Paginator
 
@@ -78,7 +79,7 @@ const routes: Routes = [
     ApiProfileService,
 
     AuthService,
-
+    ProfileService,
 
     { provide: MatPaginatorIntl, useValue: getUkrainianPaginatorIntl() }
   ],
