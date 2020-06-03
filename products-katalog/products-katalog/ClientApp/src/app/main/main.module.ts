@@ -11,6 +11,9 @@ import { ApiProfileService } from "../services/api/api-profile.service";
 import { AuthService } from "../services/auth.service";
 import { ConfirmDialogModule } from "./shared/dialogs/confirm-dialog/confirm-dialog.module";
 import { ProfileService } from "../services/profile.service";
+import { ProductService } from "../services/product.service";
+import { AdminProductService } from "../services/admin-products.service";
+import { AdminUsersService } from "../services/admin-users.service";
 
 //#region Paginator
 
@@ -80,6 +83,9 @@ const routes: Routes = [
 
     AuthService,
     ProfileService,
+    ProductService,
+    AdminProductService,
+    AdminUsersService,
 
     { provide: MatPaginatorIntl, useValue: getUkrainianPaginatorIntl() }
   ],
