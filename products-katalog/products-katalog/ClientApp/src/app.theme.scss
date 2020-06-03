@@ -3,7 +3,7 @@
 
 @include mat-core();
 
-$default-background: #d0d0d0;
+$default-background: #e0e0e0;
 $default-foreground: #ffffff;
 
 $default-divider: rgba(0, 0, 0, 0.12);
@@ -126,11 +126,25 @@ $breakpoints: ( xs: 'screen and (max-width: 599px)', sm: 'screen and (min-width:
 //Dialog styles
 .dialog-container-zero-padding {
   .mat-dialog-container {
-    padding: 0px 0px 12px 0px;
+    padding: 0px 0px 0px 0px;
   }
 }
 
 //Components
+
+.back {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background-color: $default-background;//mat-color($primary, lighter);
+}
+
+.page-width {
+  width: 100%;
+  max-width: 1012px !important;
+}
 
 .elipsis {
   white-space: nowrap;

@@ -20,7 +20,7 @@ export function API<T extends ApiResponse>() {
         output.status = e.status;
 
         console.log('API ERROR:', e);
-        alert(e);
+        //alert(e);
 
         //if (output.status == 401) {
         //  window.location.href = '/';

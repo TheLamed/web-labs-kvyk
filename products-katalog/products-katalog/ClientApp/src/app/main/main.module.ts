@@ -14,6 +14,7 @@ import { ProfileService } from "../services/profile.service";
 import { ProductService } from "../services/product.service";
 import { AdminProductService } from "../services/admin-products.service";
 import { AdminUsersService } from "../services/admin-users.service";
+import { AdminGuard } from "./guards/admin.guard";
 
 //#region Paginator
 
@@ -49,15 +50,15 @@ const routes: Routes = [
   {
     path: 'a',
     loadChildren: './admin/admin.module#AdminModule',
+    canActivate: [AdminGuard],
   },
-  //{
-  //  path: '',
-  //  loadChildren: './content/content.module#ContentModule',
-  //},
+  {
+    path: '',
+    loadChildren: './content/content.module#ContentModule',
+  },
   {
     path: '**',
-    //redirectTo: ''
-    redirectTo: 'a'
+    redirectTo: ''
   },
 ]
 
@@ -86,6 +87,8 @@ const routes: Routes = [
     ProductService,
     AdminProductService,
     AdminUsersService,
+
+    AdminGuard,
 
     { provide: MatPaginatorIntl, useValue: getUkrainianPaginatorIntl() }
   ],

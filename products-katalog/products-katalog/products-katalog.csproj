@@ -40,6 +40,8 @@
     <None Remove="ClientApp\src\app.theme.scss" />
     <None Remove="ClientApp\src\app\helpers\api.decorator.ts" />
     <None Remove="ClientApp\src\app\main\admin\admin.module.ts" />
+    <None Remove="ClientApp\src\app\main\content\content.module.ts" />
+    <None Remove="ClientApp\src\app\main\guards\admin.guard.ts" />
     <None Remove="ClientApp\src\app\main\main.module.ts" />
     <None Remove="ClientApp\src\app\models\api-response.model.ts" />
     <None Remove="ClientApp\src\app\models\id-value.model.ts" />
@@ -68,15 +70,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\main\shared\dialogs\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app.theme.scss" />
     <TypeScriptCompile Include="ClientApp\src\app\helpers\api.decorator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\main\admin\admin.module.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\main\content\content.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\main\guards\admin.guard.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\main\main.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\api-response.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\id-value.model.ts" />

@@ -46,6 +46,8 @@ export class ProfileService {
       this.removeLike(request);
     });
 
+    if (localStorage.getItem("token") != null)
+      this.onGetProfile.next();
   }
 
   private async getProfile() {

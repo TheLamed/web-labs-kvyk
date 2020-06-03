@@ -71,6 +71,7 @@ export class AuthService {
 
     if (response.success) {
       this.onSignUpChanged.next(response.model);
+      this._dialogService.showSnackBar("Зареєстровано");
       return;
     }
 

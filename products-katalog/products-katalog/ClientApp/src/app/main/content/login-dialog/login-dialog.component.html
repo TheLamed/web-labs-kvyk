@@ -1,0 +1,114 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <div>
+        Вхід
+      </div>
+      <button mat-icon-button (click)="close()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div fxLayout="column" fxLayoutAlign="start stretch"
+       class="p-12">
+
+    <form fxLayout="column" fxLayoutAlign="start stretch"
+          *ngIf="isLogin"
+          [formGroup]="loginForm">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Емейл</mat-label>
+        <input matInput
+               formControlName="email"
+               placeholder="Емейл">
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">Введіть емейл</mat-error>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('pattern')">Емейл не валідний</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Пароль</mat-label>
+        <input matInput type="password"
+               formControlName="password"
+               placeholder="Пароль">
+        <mat-icon matSuffix>vpn_key</mat-icon>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Введіть пароль</mat-error>
+      </mat-form-field>
+
+      <div class="mb-24"
+           *ngIf="loginFailedMessage != null">
+        <mat-error *ngIf="loginFailedMessage == 'email'">Невірний емейл</mat-error>
+        <mat-error *ngIf="loginFailedMessage == 'password'">Невірний пароль</mat-error>
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="8px">
+
+        <button mat-raised-button color="primary"
+                (click)="login()">
+          Вхід
+        </button>
+        
+        <button mat-button (click)="isLogin = ! isLogin">
+          Реєстрація
+        </button>
+
+      </div>
+
+    </form>
+
+    <form fxLayout="column" fxLayoutAlign="start stretch"
+          *ngIf="!isLogin"
+          [formGroup]="signUpForm">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ім'я</mat-label>
+        <input matInput
+               formControlName="name"
+               placeholder="Ім'я">
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">Введіть ім'я</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Емейл</mat-label>
+        <input matInput
+               formControlName="email"
+               placeholder="Емейл">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">Введіть емейл</mat-error>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('pattern')">Емейл не валідний</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Пароль</mat-label>
+        <input matInput type="password"
+               formControlName="password"
+               placeholder="Пароль">
+        <mat-icon matSuffix>vpn_key</mat-icon>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Введіть пароль</mat-error>
+      </mat-form-field>
+
+      <div class="mb-24"
+           *ngIf="signUpFailed == false">
+        <mat-error>Емейл зайнятий</mat-error>
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="8px">
+
+        <button mat-raised-button color="primary"
+                (click)="signUp()">
+          Реєстрація
+        </button>
+
+        <button mat-button (click)="isLogin = ! isLogin">
+          Логін
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
