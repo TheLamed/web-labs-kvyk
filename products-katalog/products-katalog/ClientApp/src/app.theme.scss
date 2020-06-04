@@ -160,6 +160,10 @@ $breakpoints: ( xs: 'screen and (max-width: 599px)', sm: 'screen and (min-width:
   }
 }
 
+.warn-text {
+  color: map-get($warn, 400);
+}
+
 //Fixing styles
 
 admin-dashboard .mat-tab-body-wrapper {

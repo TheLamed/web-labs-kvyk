@@ -1,0 +1,92 @@
+<div fxLayout="column" fxLayoutAlign="space-between stretch" fxFill>
+  <div fxLayout="column" fxLayoutAlign="start stretch"
+       class="mt-8">
+    <user-find></user-find>
+  </div>
+
+  <mat-table [dataSource]="dataSource" multiTemplateDataRows matSort
+             class="terms-table">
+    <!-- More -->
+    <ng-container matColumnDef="more">
+      <mat-header-cell *matHeaderCellDef class="w-40"></mat-header-cell>
+      <mat-cell *matCellDef="let element" class="w-40">
+        <button mat-icon-button
+                (click)="expandedElement = expandedElement === element ? null : element">
+          <mat-icon *ngIf="expandedElement == element">expand_less</mat-icon>
+          <mat-icon *ngIf="expandedElement != element">expand_more</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Id -->
+    <ng-container matColumnDef="id" >
+      <mat-header-cell *matHeaderCellDef class="w-60" mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="w-60"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Назва</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span [class.warn-text]="element.role == 'Admin'">{{element.name}}</span>
+      </mat-cell>
+    </ng-container>
+    
+    <!-- Email -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Емейл</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a href="mailto:{{element.email}}" class="url">{{element.email}}</a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="w-40"></mat-header-cell>
+      <mat-cell *matCellDef="let element" class="w-40">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="deleteUser(element.id)"
+                  [disabled]="element.role == 'Admin'">
+            <mat-icon>delete_outline</mat-icon>Видалити
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Expanded Detail -->
+    <ng-container matColumnDef="expandedDetail">
+      <mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+        <div class="example-element-detail"
+             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="pl-100 pr-40 py-12">
+            <div>{{element.role}}</div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="12px"
+                 class="mt-12">
+              <div>Подобається: </div>
+              <div *ngFor="let item of element.likes">
+                {{item.value}};
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let element; columns: columnsToDisplay;"
+             class="example-element-row"
+             [class.example-expanded-row]="expandedElement === element">
+    </mat-row>
+    <mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></mat-row>
+  </mat-table>
+  <div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                   [length]="totalCount"
+                   [pageSize]="pagingParams.ps"
+                   [pageIndex]="pagingParams.pn"></mat-paginator>
+  </div>
+</div>
+

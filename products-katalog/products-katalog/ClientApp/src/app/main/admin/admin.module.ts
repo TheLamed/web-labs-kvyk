@@ -9,6 +9,8 @@ import { ProductsComponent } from "./products/products.component";
 import { AddProductDialogComponent } from "./products/add-product/add-product-dialog.component";
 import { AddImageDialogComponent } from "./products/add-image/add-image-dialog.component";
 import { ProductFindComponent } from "./products/product-find/product-find.component";
+import { UsersComponent } from "./users/users.component";
+import { UserFindComponent } from "./users/user-find/user-find.component";
 
 const routes: Routes = [
   {
@@ -24,6 +26,8 @@ const routes: Routes = [
     AddProductDialogComponent,
     AddImageDialogComponent,
     ProductFindComponent,
+    UsersComponent,
+    UserFindComponent,
   ],
   entryComponents: [
     DashboardComponent,
@@ -31,6 +35,8 @@ const routes: Routes = [
     AddProductDialogComponent,
     AddImageDialogComponent,
     ProductFindComponent,
+    UsersComponent,
+    UserFindComponent,
   ],
   imports: [
     RouterModule.forChild(routes),

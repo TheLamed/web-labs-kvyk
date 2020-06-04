@@ -53,7 +53,7 @@ export class ApiAdminUsersService {
     if (request.like != null) params = params.set("like", request.like.toString());
 
     let response = new ModelResponse<PagingList<ViewUserModel>>();
-    response.model = await this._httpClient.get<PagingList<ViewUserModel>>('api/users', { params: params, headers: this.headers }).toPromise();
+    response.model = await this._httpClient.get<PagingList<ViewUserModel>>('api/admin/users', { params: params, headers: this.headers }).toPromise();
     return response;
   }
 

@@ -22,7 +22,7 @@ namespace products_katalog.Models.Auth
         {
             Id = entity.Id;
             Email = entity.Email;
-            Name = entity.Email;
+            Name = entity.Name;
             Role = entity.Role;
         }
     }
