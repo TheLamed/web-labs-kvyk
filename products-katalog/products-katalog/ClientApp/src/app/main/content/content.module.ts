@@ -7,6 +7,8 @@ import { ContentComponent } from "./content/content.component";
 import { LoginDialogComponent } from "./login-dialog/login-dialog.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { FindComponent } from "./content/find/find.component";
+import { ProfileDialogComponent } from "./profile-dialog/profile-dialog.component";
+import { ChangePasswordDialogComponent } from "./profile-dialog/change-password/change-password-dialog.component";
 
 const routes: Routes = [
   {
@@ -20,6 +22,8 @@ const routes: Routes = [
     ContentComponent,
     LoginDialogComponent,
     FindComponent,
+    ProfileDialogComponent,
+    ChangePasswordDialogComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -47,6 +51,8 @@ const routes: Routes = [
   entryComponents: [
     LoginDialogComponent,
     FindComponent,
+    ProfileDialogComponent,
+    ChangePasswordDialogComponent,
   ]
 })
 export class ContentModule { }

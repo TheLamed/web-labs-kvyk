@@ -1,0 +1,57 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <div>
+        {{ user.name }}
+      </div>
+      <button mat-icon-button (click)="close()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div fxLayout="column" fxLayoutAlign="start stretch"
+       class="p-12">
+
+    <form fxLayout="column" fxLayoutAlign="start stretch"
+          [formGroup]="form">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ім'я</mat-label>
+        <input matInput
+               formControlName="name"
+               placeholder="Ім'я">
+        <mat-error *ngIf="form.controls['name'].hasError('required')">Введіть ім'я</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Емейл</mat-label>
+        <input matInput
+               formControlName="email"
+               placeholder="Емейл">
+        <mat-error *ngIf="form.controls['email'].hasError('required')">Введіть емейл</mat-error>
+        <mat-error *ngIf="form.controls['email'].hasError('pattern')">Емейл не валідний</mat-error>
+      </mat-form-field>
+
+      <div class="mb-16" *ngIf="failed">
+        <mat-error>Такий емейл зайнятий!</mat-error>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+
+        <button mat-raised-button color="primary"
+                (click)="edit()">
+          Редагувати
+        </button>
+        
+        <button mat-raised-button
+                (click)="changePassword()">
+          Змінити пароль
+        </button>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+

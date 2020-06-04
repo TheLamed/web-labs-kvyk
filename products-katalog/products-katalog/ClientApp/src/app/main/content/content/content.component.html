@@ -5,9 +5,10 @@
       <div>Каталог продуктів</div>
       <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
 
-        <div *ngIf="user != null">
+        <button mat-button *ngIf="user != null"
+                (click)="profile()">
           {{user.name}}
-        </div>
+        </button>
 
         <a mat-button *ngIf="user != null && user.role == 'Admin'"
            [routerLink]="['/a']">

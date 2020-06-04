@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { Subject, BehaviorSubject } from "rxjs";
 import { EditProfileModel } from "../models/profile/edit-profile.model";
 import { ApiProfileService } from "./api/api-profile.service";
 import { AuthService } from "./auth.service";
@@ -15,6 +15,9 @@ export class ProfileService {
   onAddLike: Subject<number>;
   onRemoveLike: Subject<number>;
 
+  onEditFailed: BehaviorSubject<boolean>;
+  onPasswordChangeFailed: BehaviorSubject<boolean>;
+
   constructor(
     private _api: ApiProfileService,
     private _authservice: AuthService,
@@ -25,6 +28,9 @@ export class ProfileService {
     this.onChangePassword = new Subject();
     this.onAddLike = new Subject();
     this.onRemoveLike = new Subject();
+
+    this.onEditFailed = new BehaviorSubject(false);
+    this.onPasswordChangeFailed = new BehaviorSubject(false);
 
     this.onGetProfile.subscribe(request => {
       this.getProfile();
@@ -71,6 +77,8 @@ export class ProfileService {
 
     if (response.success) {
       this._authservice.onUserChanged.next(response.model);
+      this.onEditFailed.next(false);
+      this._dialogService.showSnackBar("Збережено!");
       return;
     }
 
@@ -80,6 +88,7 @@ export class ProfileService {
         this._authservice.onUserChanged.next(null)
         break;
       case 400:
+        this.onEditFailed.next(true);
         this._dialogService.showSnackBar("Такий емейл вже зареєстровано!");
         break;
     }
@@ -90,6 +99,7 @@ export class ProfileService {
 
     if (response.success) {
       this._dialogService.showSnackBar("Пароль змінено!");
+      this.onPasswordChangeFailed.next(false);
       return;
     }
 
@@ -100,6 +110,7 @@ export class ProfileService {
         break;
       case 400:
         this._dialogService.showSnackBar("Неправельний пароль!");
+        this.onPasswordChangeFailed.next(true);
         break;
     }
   }

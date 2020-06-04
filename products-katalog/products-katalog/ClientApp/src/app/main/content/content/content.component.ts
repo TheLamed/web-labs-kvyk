@@ -10,6 +10,7 @@ import { ProductService } from '../../../services/product.service';
 import { ProductModel } from '../../../models/products/product.model';
 import { GetProductsRequest } from '../../../models/requests/get-products-request.model';
 import { trigger, transition, query, style, stagger, animate } from '@angular/animations';
+import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.component';
 
 @Component({
   selector: 'content',
@@ -138,5 +139,16 @@ export class ContentComponent implements OnInit {
       item.isLiked = false;
     }
   }
-  
+
+  profile() {
+    let dialogRef = this.dialog.open(ProfileDialogComponent, {
+      panelClass: 'dialog-container-zero-padding',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(closed => {
+      dialogRef = null;
+    });
+  }
+
 }
