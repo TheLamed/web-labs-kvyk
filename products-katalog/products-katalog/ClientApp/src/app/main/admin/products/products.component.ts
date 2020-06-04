@@ -54,6 +54,7 @@ export class ProductsComponent {
   ngOnInit() {
     this.dataSource = new MatTableDataSource<ProductModel>([]);
     this.pagingParams = new GetProductsRequest(this._productsService.request);
+    this.pagingParams.onlyLikes = false;
 
     this._productsService.onGetProducts
       .pipe(takeUntil(this._unsubscribe))

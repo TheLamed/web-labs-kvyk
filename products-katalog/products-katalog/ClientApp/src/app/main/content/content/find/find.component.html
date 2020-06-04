@@ -1,0 +1,22 @@
+<form fxFlex
+      fxLayout="column" fxLayoutAlign="start stretch"
+      [formGroup]="form">
+  <mat-form-field appearance="outline" class="mat-form-field-no-error">
+    <mat-label>Пошук</mat-label>
+    <input matInput
+           formControlName="name"
+           placeholder="Назва">
+    <button mat-mini-fab color="primary" matSuffix
+            (click)="find()"
+            matTooltip="Пошук">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+  <div>
+    <mat-checkbox formControlName="onlyLikes"
+                  color="primary"
+                  (change)="find()">
+      Улюблені
+    </mat-checkbox>
+  </div>
+</form>

@@ -29,11 +29,98 @@
   </mat-toolbar>
 
   <div fxLayout="column" fxLayoutAlign="start center">
-    <div class="page-width p-24"
+    <div class="page-width px-24 pt-24"
          fxLayout="column" fxLayoutAlign="start stretch">
 
-      <mat-card>
-        Hello
+      <mat-card fxLayout="column" fxLayoutAlign="start stretch">
+        <find></find>
+      </mat-card>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div>Продукти:</div>
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>sort</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="sortColumn('id')"
+                    [class.selected-action]="request.sort == 'id'">
+              Id
+            </button>
+            <button mat-menu-item (click)="sortColumn('name')"
+                    [class.selected-action]="request.sort == 'name'">
+              Ім'я
+            </button>
+            <button mat-menu-item (click)="sortColumn('price')"
+                    [class.selected-action]="request.sort == 'price'">
+              Ціна
+            </button>
+          </mat-menu>
+
+          <button mat-icon-button [matMenuTriggerFor]="menu2">
+            <mat-icon>sort_by_alpha</mat-icon>
+          </button>
+          <mat-menu #menu2="matMenu">
+            <button mat-menu-item (click)="sortDir('')"
+                    [class.selected-action]="request.sortDir == ''">
+              <mat-icon></mat-icon>Без сортування
+            </button>
+            <button mat-menu-item (click)="sortDir('asc')"
+                    [class.selected-action]="request.sortDir == 'asc'">
+              <mat-icon>arrow_downward</mat-icon>Спадання
+            </button>
+            <button mat-menu-item (click)="sortDir('desc')"
+                    [class.selected-action]="request.sortDir == 'desc'">
+              <mat-icon>arrow_upward</mat-icon>Зростання
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="12px"
+           class="scrolable-content"
+           [@listAnimation]="products.length">
+
+        <mat-card *ngFor="let item of products"
+                  fxLayout="row" fxLayoutAlign="start stretch">
+
+          <div *ngIf="item.images != 0">
+            <img src="{{item.images[item['imgselector'] || 0]}}"
+                 width="250"
+                 (click)="nextImg(item)"/>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex
+               class="ml-24">
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <h3>{{item.name}}</h3>
+              <button mat-icon-button (click)="like(item)"
+                      class="like-button"
+                      *ngIf="user != null">
+                <mat-icon *ngIf="item.isLiked">favorite</mat-icon>
+                <mat-icon *ngIf="!item.isLiked">favorite_border</mat-icon>
+              </button>
+            </div>
+
+            <div>
+              {{item.description}}
+            </div>
+
+            <div>
+              <b>Ціна: </b>
+              <span>{{item.price}} грн.</span>
+            </div>
+
+          </div>
+        </mat-card>
+
+      </div>
+
+      <mat-card fxLayout="column" fxLayoutAlign="start stretch" class="mt-12 p-0">
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                       [length]="totalCount"
+                       [pageSize]="request.ps"
+                       [pageIndex]="request.pn"></mat-paginator>
       </mat-card>
 
     </div>
