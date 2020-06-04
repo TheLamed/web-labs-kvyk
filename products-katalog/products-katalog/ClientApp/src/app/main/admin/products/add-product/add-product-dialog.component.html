@@ -1,0 +1,69 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <div>
+        {{ !isEdit ? 'Додати продукт': 'Редагувати продукт' }}
+      </div>
+      <button mat-icon-button (click)="close()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div fxLayout="column" fxLayoutAlign="start stretch"
+       class="p-12">
+
+    <form fxLayout="column" fxLayoutAlign="start stretch"
+          [formGroup]="form">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Назва</mat-label>
+        <input matInput
+               formControlName="name"
+               placeholder="Назва">
+        <mat-error *ngIf="form.controls['name'].hasError('required')">Введіть назву</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Опис</mat-label>
+        <textarea matInput rows="4"
+                  formControlName="description"
+                  placeholder="Опис">
+        </textarea>
+        <mat-error *ngIf="form.controls['description'].hasError('required')">Введіть опис</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ціна</mat-label>
+        <input matInput type="number"
+               formControlName="price"
+               placeholder="0">
+        <mat-error *ngIf="form.controls['price'].hasError('required')">Введіть ціну</mat-error>
+        <mat-error *ngIf="form.controls['price'].hasError('pattern')">Ціна на валідна</mat-error>
+      </mat-form-field>
+
+      <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+
+        <button mat-raised-button color="primary"
+                *ngIf="!isEdit"
+                (click)="addProduct()">
+          Додати
+        </button>
+        
+        <button mat-raised-button color="primary"
+                *ngIf="isEdit"
+                (click)="editdProduct()">
+          Редагувати
+        </button>
+
+        <button mat-button
+                (click)="close()">
+          Відмінити
+        </button>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+

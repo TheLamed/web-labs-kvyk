@@ -1,0 +1,46 @@
+<div class="back" fxLayout="column" fxLayoutAlign="start stretch">
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <div>Каталог продуктів. Адміністрування</div>
+      <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+
+        <div *ngIf="user != null">
+          {{user.name}}
+        </div>
+
+        <a mat-button
+           [routerLink]="['/']">
+          Головна
+        </a>
+
+        <button mat-button
+                (click)="logout()">
+          Вийти
+        </button>
+
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div fxLayout="column" fxLayoutAlign="start center">
+    <div class="page-width p-24"
+         fxLayout="column" fxLayoutAlign="start stretch">
+
+      <mat-card>
+
+        <mat-tab-group fxFlex>
+          <mat-tab label="Продукти">
+            <products></products>
+          </mat-tab>
+          <mat-tab label="Користувачі">
+            <!--<admin-themes></admin-themes>-->
+          </mat-tab>
+        </mat-tab-group>
+
+      </mat-card>
+
+    </div>
+  </div>
+
+</div>

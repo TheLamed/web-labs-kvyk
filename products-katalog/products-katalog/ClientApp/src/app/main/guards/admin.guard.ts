@@ -13,7 +13,7 @@ export class AdminGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-    if (this._auth.onUserChanged.value.role == "Admin")
+    if (this._auth.onUserChanged.value != null && this._auth.onUserChanged.value.role == "Admin")
       return true;
 
     return false;

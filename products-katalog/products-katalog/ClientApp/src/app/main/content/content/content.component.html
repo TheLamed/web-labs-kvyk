@@ -9,9 +9,10 @@
           {{user.name}}
         </div>
 
-        <button mat-button *ngIf="user != null && user.role == 'Admin'">
+        <a mat-button *ngIf="user != null && user.role == 'Admin'"
+           [routerLink]="['/a']">
           Адміністрування
-        </button>
+        </a>
 
         <button mat-button *ngIf="user == null"
                 (click)="login()">

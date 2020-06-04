@@ -1,0 +1,40 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <div>
+        Додати фото
+      </div>
+      <button mat-icon-button (click)="close()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div fxLayout="column" fxLayoutAlign="start stretch"
+       class="p-12">
+
+    <div fxLayout="column" fxLayoutAlign="start stretch">
+
+      <div class="my-24">
+        <input type="file"
+           (change)="handleFileInput($event.target.files)"/>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+
+        <button mat-raised-button color="primary"
+                (click)="addImage()">
+          Завантажити
+        </button>
+        
+        <button mat-button
+                (click)="close()">
+          Відмінити
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+

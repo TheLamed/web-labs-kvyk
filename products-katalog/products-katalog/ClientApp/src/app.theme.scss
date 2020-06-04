@@ -161,3 +161,13 @@ $breakpoints: ( xs: 'screen and (max-width: 599px)', sm: 'screen and (min-width:
 }
 
 //Fixing styles
+
+admin-dashboard .mat-tab-body-wrapper {
+  height: 100%;
+}
+
+.mat-form-field-no-error {
+  .mat-form-field-wrapper {
+    padding: 0;
+  }
+}

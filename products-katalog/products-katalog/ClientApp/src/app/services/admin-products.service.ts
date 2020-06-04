@@ -18,7 +18,7 @@ export class AdminProductService {
   onEditProduct: Subject<IdValueModel<AddProductModel>>;
   onDeleteProduct: Subject<number>;
   onAddImage: Subject<UploadImageRequest>;
-  onRemoveProduct: Subject<IdValueModel<string>>;
+  onRemoveImage: Subject<IdValueModel<string>>;
 
   constructor(
     private _api: ApiAdminProductsService,
@@ -30,7 +30,7 @@ export class AdminProductService {
     this.onEditProduct = new Subject();
     this.onDeleteProduct = new Subject();
     this.onAddImage = new Subject();
-    this.onRemoveProduct = new Subject();
+    this.onRemoveImage = new Subject();
 
     this.onAddProduct.subscribe(request => {
       this.addProduct(request);
@@ -48,7 +48,7 @@ export class AdminProductService {
       this.addImage(request);
     });
     
-    this.onRemoveProduct.subscribe(request => {
+    this.onRemoveImage.subscribe(request => {
       this.removeImage(request);
     });
 

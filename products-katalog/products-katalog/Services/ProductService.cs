@@ -105,6 +105,7 @@ namespace products_katalog.Services
         public async Task<bool> DeleteProduct(int id)
         {
             var product = await _db.Products
+                .Include(v => v.Images)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(v => v.Id == id);
 

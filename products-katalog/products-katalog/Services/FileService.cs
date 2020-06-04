@@ -45,13 +45,14 @@ namespace products_katalog.Services
 
             var fileName = guid.ToString() + extention;
             var fileLink = path + fileName;
+            var link = _configuration["FilesPath"] + "/" + fileName;
 
             using (var filestream = new FileStream(fileLink, FileMode.Create))
             {
                 await file.CopyToAsync(filestream);
             }
 
-            return (fileName, fileLink);
+            return (fileName, link);
         }
 
         public async Task<bool> DeleteFile(string link)

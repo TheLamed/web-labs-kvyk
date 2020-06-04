@@ -1,0 +1,102 @@
+<div fxLayout="column" fxLayoutAlign="space-between stretch" fxFill>
+  <div fxLayout="column" fxLayoutAlign="start stretch"
+       class="mt-8">
+    <product-find></product-find>
+  </div>
+
+  <mat-table [dataSource]="dataSource" multiTemplateDataRows matSort
+             class="terms-table">
+    <!-- More -->
+    <ng-container matColumnDef="more">
+      <mat-header-cell *matHeaderCellDef class="w-40"></mat-header-cell>
+      <mat-cell *matCellDef="let element" class="w-40">
+        <button mat-icon-button
+                (click)="expandedElement = expandedElement === element ? null : element">
+          <mat-icon *ngIf="expandedElement == element">expand_less</mat-icon>
+          <mat-icon *ngIf="expandedElement != element">expand_more</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Id -->
+    <ng-container matColumnDef="id" >
+      <mat-header-cell *matHeaderCellDef class="w-60" mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="w-60"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Назва</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{element.name}}
+      </mat-cell>
+    </ng-container>
+    
+    <!-- Price -->
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Ціна</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{element.price}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="w-40"></mat-header-cell>
+      <mat-cell *matCellDef="let element" class="w-40">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="deleteTerm(element.id)">
+            <mat-icon>delete_outline</mat-icon>Видалити
+          </button>
+          <button mat-menu-item (click)="editProduct(element)">
+            <mat-icon>restore_page</mat-icon>Редагувати
+          </button>
+          <button mat-menu-item (click)="addImage(element.id)">
+            <mat-icon>attach_file</mat-icon>Додати картинку
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Expanded Detail -->
+    <ng-container matColumnDef="expandedDetail">
+      <mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+        <div class="example-element-detail"
+             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="pl-100 pr-40 py-12">
+            <div>{{element.description}}</div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" class="mt-12">
+              <img *ngFor="let im of element.images"
+                   src="{{im}}"
+                   height="200"
+                   (click)="deletePhoto(element.id, im)"/>
+            </div>
+          </div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let element; columns: columnsToDisplay;"
+             class="example-element-row"
+             [class.example-expanded-row]="expandedElement === element">
+    </mat-row>
+    <mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></mat-row>
+  </mat-table>
+  <div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                   [length]="totalCount"
+                   [pageSize]="pagingParams.ps"
+                   [pageIndex]="pagingParams.pn"></mat-paginator>
+    <div class="p-12" fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary"
+              (click)="addProduct()">
+        Додати продукт
+      </button>
+    </div>
+  </div>
+</div>
+

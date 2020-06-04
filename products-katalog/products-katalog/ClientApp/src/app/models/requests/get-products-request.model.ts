@@ -4,7 +4,7 @@ export class GetProductsRequest {
   pn: number = 0;
   ps: number = 10;
   sort: string = null;
-  sortDir: "asc" | "desc"  = "asc";
+  sortDir: "asc" | "desc" | ""  = "";
   find: string  = null;
   onlyLikes: boolean = false;
 

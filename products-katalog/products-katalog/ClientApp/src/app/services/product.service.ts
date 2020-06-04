@@ -39,7 +39,7 @@ export class ProductService {
 
     if (response.success) {
       this.onProductsChanged.next(response.model);
-      this._dialogService.showSnackBar(`Загружено ${response.model.totalCount} продуктів`);
+      //this._dialogService.showSnackBar(`Загружено ${response.model.totalCount} продуктів`);
       return;
     }
   }
