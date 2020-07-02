@@ -59,7 +59,7 @@ export class AdminProductService {
 
     if (response.success) {
       this._dialogService.showSnackBar("Додано!");
-      this._productsService.onGetProducts.next();
+      this._productsService.onGetProducts.next(this._productsService.request);
       return;
     }
   }
@@ -69,7 +69,7 @@ export class AdminProductService {
 
     if (response.success) {
       this._dialogService.showSnackBar("Відредаговано!");
-      this._productsService.onGetProducts.next();
+      this._productsService.onGetProducts.next(this._productsService.request);
       return;
     }
 
@@ -85,7 +85,7 @@ export class AdminProductService {
 
     if (response.success) {
       this._dialogService.showSnackBar("Видалено!");
-      this._productsService.onGetProducts.next();
+      this._productsService.onGetProducts.next(this._productsService.request);
       return;
     }
   }
@@ -95,7 +95,7 @@ export class AdminProductService {
 
     if (response.success) {
       this._dialogService.showSnackBar("Додано!");
-      this._productsService.onGetProducts.next();
+      this._productsService.onGetProducts.next(this._productsService.request);
       return;
     }
 
@@ -111,7 +111,7 @@ export class AdminProductService {
 
     if (response.success) {
       this._dialogService.showSnackBar("Видалено!");
-      this._productsService.onGetProducts.next();
+      this._productsService.onGetProducts.next(this._productsService.request);
       return;
     }
 
